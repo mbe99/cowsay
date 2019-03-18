@@ -2,12 +2,13 @@
 
 ## named Debian Container starten
 
+Docker Container starten und eine **bash** aufrufen. 
+
 ```
-$ docker run -it --name cowsay --hostname cowsay debian bash
-root@cowsay:/#
+# docker run -it --name cowsay --hostname cowsay debian bash
 root@cowsay:/# exit
 exit
-root@ubuntu-xenial:~#
+
 
 ```
 
@@ -19,7 +20,9 @@ root@ubuntu-xenial:~#
 # docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
 0c03e21afcdf        debian              "bash"              23 minutes ago      Exited (0) 20 minutes ago                       cowsay
+
 # docker start 0c03e21afcdf
+
 # docker exec -it 0c03e21afcdf bash
 root@cowsay:/# apt-get update
 ....
