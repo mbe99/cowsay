@@ -2,12 +2,12 @@
 # vi: set ft=ruby :
 
 #
-#	Ubuntu Version 16.x 64-bit Linux mit Docker und ghost
+#	Centos 7 64-bit Linux mit Docker und ghost
 #
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "centos/7"
 
   # Create a public network, which generally matched to bridged network.
   #config.vm.network "public_network"
