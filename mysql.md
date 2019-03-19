@@ -2,7 +2,15 @@
 
 ## Mysql Client installieren
 
+für Ubuntu
+
     sudo apt-get install -y mysql-client-core-5.7
+
+für Centos
+
+     yum install -y mysql
+
+
 
 ## Mysql Docker Image ausführen
 
