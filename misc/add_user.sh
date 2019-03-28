@@ -13,3 +13,8 @@ echo ${key} > /home/${user}/.ssh/authorized_keys
 chown -R ${user}:${user} /home/${user}/
 chmod 700  /home/${user}/.ssh
 chmod 600  /home/${user}/.ssh/authorized_keys
+
+# configure sudo 
+usermod -G wheel ${user}
+sed -i 's/^%wheel/#mbe# %wheel/' /etc/sudoers
+sed -i 's/^# %wheel/%wheel/' /etc/sudoers
