@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+     - ./data/mysql:/var/lib/mysql
+    restart: always
+    environment:
+     MYSQL_ROOT_PASSWORD: sehr_geheim
+     MYSQL_DATABASE: wordpress
+     MYSQL_USER: wordpress_user
+     MYSQL_PASSWORD: 123wordpress
+  wp:
+    depends_on:
+     - db
+    image: wordpress:4-php7.2-apache
+    volumes:
+     - ./data/wp/themes:/var/www/html/wp-content/themes/
+     - ./data/wp/uploads:/var/www/html/wp-content/uploads/
+    ports:
+     - "8080:80"
+    restart: always
+    environment:
+     WORDPRESS_DB_HOST: db
+     WORDPRESS_DB_USER: wordpress_user
+     WORDPRESS_DB_PASSWORD: 123wordpress
