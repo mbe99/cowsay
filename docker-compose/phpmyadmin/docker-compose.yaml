@@ -14,5 +14,5 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: webserver
     ports:
-     - "80:80"
+     - "8081:80"
     restart: always
