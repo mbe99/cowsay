@@ -17,7 +17,7 @@ services:
     image: ghost:1-alpine
     container_name: ghost
     ports:
-     - "8080:80"
+     - "8082:80"
     restart: always
     environment:
       base__client=mysql
