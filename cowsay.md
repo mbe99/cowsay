@@ -5,11 +5,9 @@
 Docker Container starten und eine **bash** aufrufen. 
 
 ```
-# docker run -it --name cowsay --hostname cowsay debian bash
+# docker run -it --name cowsay --hostname cowsay debian:stretch-slim bash
 root@cowsay:/# exit
 exit
-
-
 ```
 
     $ docker history debian
@@ -18,12 +16,12 @@ exit
 
 ```
 # docker ps -a
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
-0c03e21afcdf        debian              "bash"              23 minutes ago      Exited (0) 20 minutes ago                       cowsay
+CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS                       PORTS     NAMES
+1aa442bb70be   debian:stretch-slim   "bash"                   2 minutes ago    Exited (0) 18 seconds ago              cowsay
 
-# docker start 0c03e21afcdf
+# docker start cowsay
 
-# docker exec -it 0c03e21afcdf bash
+# docker exec -it cowsay bash
 root@cowsay:/# apt-get update
 ....
 Fetched 7877 kB in 7s (1089 kB/s)
@@ -39,7 +37,7 @@ root@cowsay:/#
 ```
 
 ### testen im Container
-```` 
+``` 
 root@cowsay:/# /usr/games/fortune |/usr/games/cowsay
  ________________________________________
 / I don't know half of you half as well  \
@@ -56,58 +54,54 @@ root@cowsay:/# /usr/games/fortune |/usr/games/cowsay
                 ||     ||
 root@cowsay:/# exit
 exit
-
-
-````
+```
 
 ### Docker Image vom Container erstellen
 
-````
-root@ubuntu-xenial:~# docker commit cowsay cowsay:1-0
+```
+$ docker commit cowsay cowsay:1-0
 sha256:3394945165c33c08027a694632a9fad04b358764f33a83c8aa9015b25111d90b
 
-root@ubuntu-xenial:~# docker images
+$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 cowsay              1-0                 3394945165c3        30 seconds ago      159MB
 root@ubuntu-xenial:~#
 
-````
+```
 
 ### Image Veränderung Debian zu Cowsay
 
-````
-# docker history debian
+```
+$ docker history debian
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 0af60a5c6dd0        12 days ago         /bin/sh -c #(nop)  CMD ["bash"]                 0B
 <missing>           12 days ago         /bin/sh -c #(nop) ADD file:e4bdc12117ee95eaa…   101MB
 
-# docker history cowsay:1-0
+$ docker history cowsay:1-0
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 3394945165c3        2 minutes ago       bash                                            58.7MB
 0af60a5c6dd0        12 days ago         /bin/sh -c #(nop)  CMD ["bash"]                 0B
 <missing>           12 days ago         /bin/sh -c #(nop) ADD file:e4bdc12117ee95eaa…   101MB
-root@ubuntu-xenial:~#
-````
-
+```
 
 ## Image mit Dockerfile erstellen
 
 edit  Dockerfile 
 
-`# vi Dockerfile` 
+    $ vi Dockerfile
 
 ```
-FROM debian:wheezy
+FROM debian:stretch-slim
 RUN apt-get update && apt-get install -y cowsay fortune
 ```
 
 ### build Docker Image
-    # docker build -t cowsay:1-1 .
+    $ docker build -t cowsay:1-1 .
 
 ### execute 'cowsay'
 
 ```
-# docker run cowsay:1-1 /usr/games/cowsay "muuh"
+$ docker run cowsay:1-1 /usr/games/cowsay "muuh"
  ______
 < muuh >
  ------
@@ -116,26 +110,23 @@ RUN apt-get update && apt-get install -y cowsay fortune
             (__)\       )\/\
                 ||----w |
                 ||     ||
-root@ubuntu-xenial:~#
 ```
-
-
 
 ### Docker Image um Entrypoint erweiteren
 
 Add ENTRYPOINT zum Dockerfile
 
-`# vi Dockerfile` 
+    $ vi Dockerfile
 
 ```` 
-# vi Dockerfile
-FROM debian:wheezy
+$ vi Dockerfile
+FROM debian:stretch-slim
 RUN apt-get update && apt-get install -y cowsay fortune
 ENTRYPOINT ["/usr/games/cowsay"]
 ```` 
 
 ### Docker Image builden
-    # docker build -t cowsay:1-2 .
+    $ docker build -t cowsay:1-2 .
 
 
 ### execute 'cowsay' über ENTRYPOINT
