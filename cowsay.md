@@ -28,15 +28,18 @@ Fetched 7877 kB in 7s (1089 kB/s)
 Reading package lists... Done
 
 root@cowsay:/# apt-get install -y cowsay fortune
-....
+
+~
 update-alternatives: using /usr/bin/file-rename to provide /usr/bin/rename (rename) in auto mode
 Processing triggers for libc-bin (2.24-11+deb9u4) 
-...
+~
+
 root@cowsay:/#
 
 ```
 
 ### testen im Container
+
 ``` 
 root@cowsay:/# /usr/games/fortune |/usr/games/cowsay
  ________________________________________
@@ -53,7 +56,6 @@ root@cowsay:/# /usr/games/fortune |/usr/games/cowsay
                 ||----w |
                 ||     ||
 root@cowsay:/# exit
-exit
 ```
 
 ### Docker Image vom Container erstellen
@@ -65,8 +67,6 @@ sha256:3394945165c33c08027a694632a9fad04b358764f33a83c8aa9015b25111d90b
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 cowsay              1-0                 3394945165c3        30 seconds ago      159MB
-root@ubuntu-xenial:~#
-
 ```
 
 ### Image Veränderung Debian zu Cowsay
