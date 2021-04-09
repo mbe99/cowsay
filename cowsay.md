@@ -105,6 +105,21 @@ IMAGE               CREATED             CREATED BY                              
 <missing>           12 days ago         /bin/sh -c #(nop) ADD file:e4bdc12117ee95eaa…   101MB
 ```
 
+### execute 'cowsay' mit Image cowsay:1-0
+
+```
+$ docker run cowsay:1-0 /usr/games/cowsay "muuh"
+ ______
+< muuh >
+ ------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+
 ## Image mit Dockerfile erstellen
 
 edit  Dockerfile 
@@ -119,7 +134,7 @@ RUN apt-get update && apt-get install -y cowsay fortune
 ### build Docker Image
     $ docker build -t cowsay:1-1 .
 
-### execute 'cowsay'
+### execute 'cowsay' mit Image cowsay:1-1
 
 ```
 $ docker run cowsay:1-1 /usr/games/cowsay "muuh"
