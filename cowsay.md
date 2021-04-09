@@ -10,7 +10,7 @@ root@cowsay:/# exit
 exit
 ```
 
-    $ docker history debian
+    $ docker history debian:stretch-slim
 
 ### reconnect Container - Install cowsaw und fortune im Container
 
