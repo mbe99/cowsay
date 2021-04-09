@@ -1,5 +1,25 @@
 # cowsay
 
+##
+alle laufenden Conatiner stoppen
+
+```
+$ docker stop `docker ps -q`
+```
+
+alle im HIntergrund laufenden Container stoppen
+
+```
+$ docker rm `docker ps -a -q`
+```
+
+alle laufenden und und im HIntergrund laufenden Container stoppen
+
+```
+$ docker stop `docker ps -q` && docker rm `docker ps -a -q`
+```
+
+
 ## named Debian Container starten
 
 Docker Container starten und eine **bash** aufrufen. 
