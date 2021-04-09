@@ -108,7 +108,7 @@ IMAGE               CREATED             CREATED BY                              
 ### execute 'cowsay' mit Image cowsay:1-0
 
 ```
-$ docker run cowsay:1-0 /usr/games/cowsay "muuh"
+$ docker run cowsay:1-0 /usr/games/cowsay "muuh - cowsay:1-0"
  ______
 < muuh >
  ------
@@ -137,7 +137,7 @@ RUN apt-get update && apt-get install -y cowsay fortune
 ### execute 'cowsay' mit Image cowsay:1-1
 
 ```
-$ docker run cowsay:1-1 /usr/games/cowsay "muuh"
+$ docker run cowsay:1-1 /usr/games/cowsay "muuh - cowsay:1-1"
  ______
 < muuh >
  ------
@@ -167,7 +167,7 @@ ENTRYPOINT ["/usr/games/cowsay"]
 
 ### execute 'cowsay' über ENTRYPOINT
 ````
-# docker run cowsay:1-2 "muuh"
+# docker run cowsay:1-2 "muuh - cowsay:1-2"
  ______
 < muuh >
  ------
