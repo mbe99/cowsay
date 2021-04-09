@@ -93,7 +93,7 @@ cowsay              1-0                 3394945165c3        30 seconds ago      
 ### Image Veränderung Debian zu Cowsay
 
 ```
-$ docker history stretch-slim
+$ docker history debian:stretch-slim
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 0af60a5c6dd0        12 days ago         /bin/sh -c #(nop)  CMD ["bash"]                 0B
 <missing>           12 days ago         /bin/sh -c #(nop) ADD file:e4bdc12117ee95eaa…   101MB
